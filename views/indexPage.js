@@ -7,9 +7,19 @@ module.exports = (function () {
 				'<body>' + 
 				getPageHeader() + 
 				getPageNav() +
+				getAjaxDemo() +
 				getMain() +
+				getLibs() +
 				'</body></html>';
 	}
+
+	var getLibs = function () {
+            return [
+                '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>',
+                '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>',
+                '<script type="text/javascript" src="ajax.js"></script>'
+            ].join('');
+        };
 
 	var getPageHead = function () {
 		 return '<head>' +
@@ -29,13 +39,18 @@ module.exports = (function () {
 		return '<header><h1><a href="index.html">Profit App</a></h1></header>';
 	}
 
+	var getAjaxDemo = function () {
+           return '<button id="costs">Ajax Demo</button>' + 
+                   '<div id="ResultDisplay"></div>';
+        };
+
 	var getPageNav = function () {
 		return '<nav>' + 
 					'<div class="container">' + 
 						'<div>' + 
 							'<button onclick="profitModule.displayAllItems()">Всі записи</button>' + 
 							'<button onclick="profitModule.displayAllByCat()">Всі записи по категоріям</button>' + 
-							'<button onclick="profitModule.displayCosts()">Всі витрати</button>' + 
+							'<button>Всі витрати</button>' + 
 							'<button onclick="profitModule.displayEarnings()">Всі доходи</button>' + 
 							'<button>Обрати дату</button>' + 
 							'<button>Додати запис</button>' + 
@@ -47,12 +62,15 @@ module.exports = (function () {
 	var getMain = function () {
 		return '<main>' + 
 					'<div class="container">' + 
-						'<div class="row">' + 
+						'<div class="row">' +  
+						 profitModule.displayAllItems() + 
+						 profitModule.displayCosts() +
 							'<div id="ResultDisplay"></div>' + 
 						'</div>' + 
 					'</div>' + 
 			   '</main>';
 	}
+
 
 	return {
 		getPage: getPage

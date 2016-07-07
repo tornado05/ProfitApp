@@ -62,7 +62,8 @@ module.exports = (function () {
 		} 
 
 		result += '</tbody></table>'
-		$('#ResultDisplay').html(result);
+		//$('#ResultDisplay').html(result);
+		return result;
 	}
 
 	function displayEarnings() {
