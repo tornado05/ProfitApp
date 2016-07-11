@@ -65,7 +65,7 @@ module.exports = (function () {
 		$('#ResultDisplay').html(result);
 	}
 
-	function displayEarnings() {
+	var displayEarnings = function() {
 		var resultByEarnings = getEarnings();
 		var result = '<h1>Всі доходи</h1><div class="table-responsive"><table class="table">' + 
 				'<thead><tr><th>ID запису</th><th>Дата</th><th>Тип</th><th>Призначення платежу</th><th>Відділ</th><th>Сума</th></thead>' + 

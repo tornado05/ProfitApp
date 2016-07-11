@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require("body-parser");
-var indexPage = require('./views/indexPage.js');
+var appView = require('./views/appView.js');
 var profitModule = require('./models/profitModule.js');
 
 var app = express();
@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
-    res.send(indexPage.getPage(req.query));
+app.get('/all', function (req, res) {
+	res.send(appView.displayAllItems(req.query));
 });
 
 app.listen(3000, function () {
