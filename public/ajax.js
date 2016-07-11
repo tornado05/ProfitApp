@@ -1,14 +1,14 @@
 $(function () {
     window.profitApp = (function () {
-        
-        var displayAll = function() {
-			$.ajax('/all').done(displayAllItems);
-    	};
 
-    	function displayAllItems() {
-			var data = getAllItems();
-			var result = '<h1>Всі записи</h1><div class="table-responsive"><table class="table">' + 
-					'<thead><tr><th>ID запису</th><th>Дата</th><th>Тип</th><th>Призначення платежу</th><th>Відділ</th><th>Сума</th></thead>' + 
+        var displayAll = function(event) {
+             console.log(event);
+			       $.ajax('/all').done(displayAllItems);
+    	  };
+
+    	function displayAllItems(data) {
+			var result = '<h1>Всі записи</h1><div class="table-responsive"><table class="table">' +
+					'<thead><tr><th>ID запису</th><th>Дата</th><th>Тип</th><th>Призначення платежу</th><th>Відділ</th><th>Сума</th></thead>' +
 					'<tbody>';
 
 			for (var i = (data.length-1); i >= 0; --i) {
@@ -19,11 +19,11 @@ $(function () {
 				result += '<td>' + data[i].department + '</td>';
 				result += '<td>' + data[i].amount + '</td>';
 				result += '</tr>';
-			} 
+			}
 
 			result += '</tbody></table>';
-			$('#ResultDisplay').text(result);
-		}	
+			$('#ResultDisplay').html(result);
+		}
 
 	    return {
 	        displayAll: displayAll
